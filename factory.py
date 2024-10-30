@@ -16,20 +16,20 @@ class Vehicle(ABC):
 
 
 class Car(Vehicle):
-    def __init__(self, make, model):
+    def __init__(self, make: str, model: str):
         self.make = make
         self.model = model
 
-    def start_engine(self):
+    def start_engine(self) -> None:
         logging.info(f"{self.make} {self.model}: Двигун запущено")
 
 
 class Motorcycle(Vehicle):
-    def __init__(self, make, model):
+    def __init__(self, make: str, model: str):
         self.make = make
         self.model = model
 
-    def start_engine(self):
+    def start_engine(self) -> None:
         logging.info(f"{self.make} {self.model}: Мотор заведено")
 
 
@@ -44,18 +44,20 @@ class VehicleFactory(ABC):
 
 
 class USVehicleFactory(VehicleFactory):
-    def create_car(self, make, model):
+
+    def create_car(self, make: str, model: str) -> Car:
         return Car(make, f"{model} (US Spec)")
 
-    def create_motorcycle(self, make, model):
+    def create_motorcycle(self, make: str, model: str) -> Motorcycle:
         return Motorcycle(make, f"{model} (US Spec)")
 
 
 class EUVehicleFactory(VehicleFactory):
-    def create_car(self, make, model):
+
+    def create_car(self, make: str, model: str) -> Car:
         return Car(make, f"{model} (EU Spec)")
 
-    def create_motorcycle(self, make, model):
+    def create_motorcycle(self, make: str, model: str) -> Motorcycle:
         return Motorcycle(make, f"{model} (EU Spec)")
 
 
